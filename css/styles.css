@@ -97,6 +97,12 @@ section {
     transition: ease 0.3s all;
 }
 
+.navActive {
+    background:coral;
+    color: #fff;
+    transition: ease 0.3s all;
+}
+
 @media (max-width: 320px) {
     .navbar__menu {
         font-size: 14px;
