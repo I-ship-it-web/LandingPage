@@ -2,15 +2,25 @@
 const navList = document.querySelector('#navbar__list'); 
 const section = document.querySelectorAll('section');
 const body = document.querySelector('body');
+const backUp = document.querySelector('#backUp');
+
+
 
 
 /*       EVENT LISTENER       */
+backUp.addEventListener('click', navigateUp, false);
 
-window.addEventListener('scroll', scrollReveal);
-window.addEventListener('scroll', smoothScroll);
 
 
 // FUNCTIONS 
+
+//Highlighting of position at navigation
+$(document).ready(function(){
+  $('ul li a').click(function(){
+    $('li a').removeClass('navActive');
+    $(this).addClass('navActive');
+  });
+});
 
 // CREATING the NAVBAR
 function menuBar() {
@@ -23,29 +33,39 @@ function menuBar() {
 
     list.innerHTML = `<a class = 'menu__link' href = '#${id}'> ${dataNav}</a>`;
     navList.appendChild(list);
-  }
-    
+  } 
 }
 menuBar();
 
 // SCROLL ACTIVE SECTION
-function scrollReveal() {
 
-  for (let i = 0; i < section.length; i++) {
-    const secPos = section[i].getBoundingClientRect().top;
-    const windowHeight = window.innerHeight / 1.5;
-    let sectionPoint = 150;
-  
-  
-    if (secPos < windowHeight - sectionPoint) {
-      section[i].classList.add('your-active-class');
+// idea from this video https://www.youtube.com/watch?v=2IbRtjez6ag
+/* 
+  Here I use "IntersectionObserver", cuz it's calculate on their own. More info in the README.md
+*/
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    entry.target.classList.toggle('your-active-class', entry.isIntersecting);
+  })
+},{
+  threshold: 0.5,
+});
 
-    } else {
-      section[i].classList.remove('your-active-class');
-    }
-  }
-}
+section.forEach(section => {
+  observer.observe(section)
+});
 
-function smoothScroll() {
-  body.style.scrollBehavior = 'smooth';
-}
+
+// Function to get Up from bottom to top with scroll behavior
+function navigateUp(e){
+  document.body.scrollIntoView({behavior: 'smooth'});
+};
+
+
+// smooth - scroll behavior 
+navList.addEventListener("click", (evt) => {
+  evt.preventDefault();
+
+  const section = document.querySelector(evt.target.getAttribute("href"));
+  section.scrollIntoView({ behavior: "smooth" });
+});
