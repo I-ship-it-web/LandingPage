@@ -6,6 +6,13 @@ const backUp = document.querySelector('#backUp');
 
 /*       EVENT LISTENER       */
 backUp.addEventListener('click', navigateUp, false);
+// smooth - scroll behavior 
+navList.addEventListener('click', (evt) => {
+  evt.preventDefault();
+
+  const section = document.querySelector(evt.target.getAttribute('href'));
+  section.scrollIntoView({ behavior: 'smooth'});
+});
 
 // FUNCTIONS 
 //Highlighting of position at navigation
@@ -54,11 +61,3 @@ section.forEach(section => {
 function navigateUp(e){
   document.body.scrollIntoView({behavior: 'smooth'});
 };
-
-// smooth - scroll behavior 
-navList.addEventListener('click', (evt) => {
-  evt.preventDefault();
-
-  const section = document.querySelector(evt.target.getAttribute('href'));
-  section.scrollIntoView({ behavior: 'smooth'});
-});
