@@ -3,7 +3,7 @@
 The main structure was created by udacity.
 I just add another backgroundcolor(css) and fill out the app.js with functions, eventListeners, etc.
 The project have 4 sections.
-The NavigationBar is created dynamically (JavaScript).
+The NavigationBar is created dynamically _(JavaScript)_.
 The project is responsive, that means you can check it out on every device.
 
 ## Nav-Bar 
@@ -16,13 +16,13 @@ It automatically create a new menu element if you add another section to the HTM
 ## Active sections
 When you scroll through the sections or use the menu, they get active.
 You will see a background animation.
-I decide to use "IntersectionObserver", because it's calculate on their when the section is on the screen.
-Threshold have the value 0,5 (50%).
+I decide to use _"IntersectionObserver"_, because it's calculate on their when the section is on the screen.
+_Threshold_ have the value 0,5 (50%).
 If I set the value at 1 (100%) you would see two sections would be active.
 
 ## Highlighting the Navigation
   The menu links get highlighted when you click them.
-  Here I used jQuery.
+  Here I used _jQuery_.
 
 
 **It is a project for the Udacity Nanodegree.**
